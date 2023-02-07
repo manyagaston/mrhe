@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <section>
+      <div class="page-title mb-5">
+        <h2 class="title">projets</h2>
+      </div>
+    </section>
+    <section class="project pb">
+      <div class="container">
+        <div class="row">
+          {% for post in post %}
+          <div class="col-lg-4">
+            <div class="card mb-3">
+              <h3>{{ post.title }}</h3>
+              <hr />
+              <div class="card-body">
+                <p class="card-text">
+                  {{ post.Detail|truncatewords:10 }}
+                </p>
+                <a href="{% pageurl post %}" class="details">Plus de détails... </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>       
+      </div>
+    </section>
+
+    {% if post.paginator.num_pages > 1 %}
+    <nav aria-label="..." class="d-flex justify-content-center mt-5">
+      {% for page_num in post.paginator.page_range %}
+      <ul class="pagination pagination">
+        <li class="page-item {% if page_num == post.number %} active{% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+      </ul>
+      {% endfor %}
+    </nav>
+{% endif %}
+{% endblock %}

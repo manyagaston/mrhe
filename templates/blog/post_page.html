@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+
+<section class="news">
+  <div class="page-title mb-5">
+    <h2 class="title">Actualité</h2>
+  </div>
+  <div class="container">
+    <div class="news-content">
+
+      {% for post in post %}
+      <div class="news bloc-center mb-4">
+        <article>
+          <div class="row">
+            {% if post.image %}
+            {% image post.image original as image %}
+            <div class="col-lg-6">
+              <a href="{% pageurl post %}" class="ms-2 link">
+              <img
+                src="{{ image.url }}"
+                class="w-100 mb-3"
+                alt=""
+              />
+            </a>
+            </div>
+            {% endif %}
+            <div class="col-lg-6">
+              <h3 class="mb-3">
+                  <a href="/actualite/{{ post.slug }}" class="link"
+                    >{{ post.title }}</a
+                  >               
+              </h3>
+              <p class="mb-3">
+                <span>{{ post.date|date:"D d M Y" }}</span
+                  >
+              </p>
+              <p>
+                {{ post.title }}
+              </p>
+            </div>
+          </div>
+        </article>
+        <hr />
+      </div>
+      {% endfor %}
+
+{% if post.paginator.num_pages > 1 %}
+    <nav aria-label="..." class="d-flex justify-content-center mt-5">
+      {% for page_num in post.paginator.page_range %}
+      <ul class="pagination pagination">
+        <li class="page-item {% if page_num == post.number %} active{% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+      </ul>
+      {% endfor %}
+    </nav>
+{% endif %}
+  
+  </section>
+
+{% endblock %}

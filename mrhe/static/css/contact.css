@@ -1,0 +1,58 @@
+@import url("/css/main.css");
+
+
+.contact {
+    background-color: #f4f4f4 !important;
+}
+section {
+    padding-bottom: 3rem !important;
+}
+
+.contact .btn-group {
+    width: 100%;
+}
+
+.contact label {
+    color: #000000;
+    font-size: 14px;
+}
+
+.contact .btn-group button {
+    padding: 16px 25px;
+    border-radius: 100px;
+}
+
+.contact input[type="text"],input[type="email"], textarea{
+    background-color: #D9D9D9 !important;
+    padding: 16.5px 13px;
+}
+
+.contact textarea {
+    height: 225px;
+}
+
+.contact .btn.btn-contact {
+    background-color: #1c4294;
+    color: #fff;
+}
+
+@media only screen and (max-width: 576px) {
+    .contact form h2 {
+        font-size: 34px;
+    }
+}
+
+/*@media only screen and (max-width: 900px) {
+    .contact form {
+        width: 100%;
+        margin: 0;
+    }
+}*/
+
+@media only screen and (min-width: 830px) {
+    .contact form {
+        width: 748px;
+        margin: 0 auto;
+    }
+}
+

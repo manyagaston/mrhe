@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<section class="ministry">
+  <div class="page-title mb-5">
+    <div class="container">
+      <h2 class="title">Administration du Ministère</h2>
+      <div class="ministry-descriText">
+        <p class="mt-2">
+          {{ page.petit_detail}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="ministry_content mt-5">
+      <div class="row">
+        {% for post in post %}
+        <div class="col-lg-4 hvr-float">
+          <div class="ministry_member pb-3 mb-5">
+            {% if post.image %}
+            <a
+              href="{% pageurl post %}"
+              class="text-black text-decoration-none"
+            >
+            {% image post.image original as image %}
+              <img
+                src="{{ image.url }}"
+                class="w-100 mb-3"
+                alt="membre du ministère"
+              />
+              <div class="min-member-name text-center">
+                <span>{{ post.fonction}}</span>
+                <p class="member-name">{{ post.title}}</p>
+              </div>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

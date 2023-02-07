@@ -1,0 +1,68 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon-16x16.png' %}" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="{% static '/css/mains.css' %}" />
+
+    <meta name="theme-color" content="#fafafa" />
+    <style>
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Book.woff' %}") format("woff");
+          font-weight: 400;
+        }
+
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Medium.woff' %}") format("woff");
+          font-weight: 500;
+        }
+
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Bold.woff' %}") format("woff");
+          font-weight: 700;
+        }
+   </style>   
+  </head>
+  <body>
+    <center>
+    <main>
+        <section>
+            <div class="message-title">
+                <h2 class="title text-center fs-60">success</h2>
+                <div class="hline mx-auto mb-5"></div>
+            </div>
+            <div class="message">
+              <p><a >Votre message a été envoyé avec succès</a>, Nous <br>
+                {{ page.thank_you_text|richtext }}
+            </p>
+            </div>
+            <div class="redirection text-center">
+                <a href="/">Revenir à la page d’acceuil</a>
+            </div>
+        </section>
+    </main>
+    <center>
+    <script src="{% static '/fonts/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
+{% endblock %}

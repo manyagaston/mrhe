@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags %}
+
+{% block content %}
+
+
+{% if search_results %}
+<section>
+    <div class="page-title mb-5">
+      <h2 class="title">RESULTATS DE LA RECHERCHE</h2>
+    </div>
+  </section>
+<ul>
+    {% for result in search_results %}
+    <section class="search">
+        <div class="container">
+            <div class="search-content bloc-center">
+              <article>
+                <div class="search-content_result mb-4">
+                    <a href="{% pageurl result %}" class="ms-2 link"><h3>{{ result }}</h3></a>
+                  
+                  <p><span>{{ result.date|date:"D d M Y"  }}</span> </p>
+                  <p>{{ result }}</p>
+                </div>
+              </article>
+              <hr>
+              
+        
+        {% if result.search_description %}
+        {{ result.search_description }}
+        {% endif %}
+    
+    {% endfor %}
+</ul>
+{% if search_results.paginator.num_pages > 1 %}
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="pagination">
+            {% if search_results.has_previous %}
+              <li class="page-item">
+                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}" class="page-link">
+                  <span>&laquo;</span>
+                </a>
+              </li>
+            {% endif %}
+            
+
+              {% for page_num in search_results.paginator.page_range %}
+            <ul class="paginatiosearchn pagination">
+              <li class="page-item {% if page_num == search_results.number %} active{% endif %}">
+                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ page_num }}" class="page-link">
+                  {{ page_num }}
+                </a>
+              </li>
+            </ul>
+            {% endfor %}
+
+            {% if search_results.has_next %}
+              <li class="page-item">
+                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}" class="page-link">
+                  <span>&raquo;</span>
+                </a>
+              </li>
+            {% endif %}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+{% elif search_query %}
+<body>
+    <main>
+      <section>
+          <div class="page-title">
+            <center>
+            <img src="{% static '/fonts/img/LOGO HYDRAULIQUE & ELECTRICITÉpsd.png' %}" alt="" style="width: 300px;">
+       
+                <h2 class="title">404 | Article non trouvé</h2>
+                <div class="hline mx-auto mb-5"></div>
+                <span>Nous n'avons pas pu trouver cette article. </span> <br>
+                <a href="/">Revenir à la page d’acceuil</a>
+                </center>
+        </div>
+        </div>
+    </section>
+    </main>
+  <script src="{% static '/fonts/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+{% endif %}
+{% endblock %}
+
+
+      

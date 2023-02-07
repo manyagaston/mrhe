@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<section >
+    <div class="container">
+      <div class="page-title bg mb-5">
+        <h2 class="title">{{page.Description}}</h2>
+        <p class="ministry-descriText">
+          {{page.Detail}}
+        </p>
+    </div>
+    </div>
+  </section>
+  <section class="first-project bg-white pt-5 pb">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3 class="">Localisation</h3>
+            <hr />
+            <div class="card-body">
+              <p class="card-text">{{page.Localisation}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3>Publique cible</h3>
+            <hr />
+            <div class="card-body p-0">
+              <p class="card-text">
+                {{page.Cible}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3>Coût du projet</h3>
+            <hr />
+            <div class="card-body">
+              <p class="card-text">
+                {{page.Cout_projet}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3 class="m-0">Progression</h3>
+            <hr />
+            <div class="card-body">
+              <label for="file">{{page.Progression}}%</label><br>
+            <progress id="file" max="100" value="{{page.Progression}}" class="w-100">
+              70% 
+            </progress>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3>Date</h3>
+            <hr />
+            <div class="card-body">
+              <p class="card-text">
+                 De {{page.Debut_projet}} à {{page.Fin_projet}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card mb-3">
+            <h3>Documents</h3>
+            <hr />
+            
+            <div class="card-body">
+                {% for page in page.documents.all %}
+                <p class="card-text">
+                    <svg version="1.1" id="Layer_1" width="15px" height="15px" fill="#1c4294" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 459.999 459.999" style="enable-background:new 0 0 459.999 459.999;" xml:space="preserve">
+  <g>
+    <g>
+      <g>
+        <path d="M212.991,249.518c9.767,9.66,25.508,9.624,35.25-0.1l74.888-74.887c9.763-9.763,9.763-25.592,0-35.355
+          c-9.762-9.763-25.591-9.763-35.355,0l-32.21,32.209V47.596c0-13.808-11.193-25-25-25s-25,11.192-25,25v123.79l-32.21-32.209
+          c-9.764-9.764-25.593-9.764-35.355,0c-9.763,9.764-9.763,25.593,0,35.355C139.121,175.656,211.868,248.403,212.991,249.518z"/>
+        <path d="M431.654,312.404H28.346C12.691,312.404,0,325.094,0,340.75v68.307c0,15.655,12.691,28.346,28.346,28.346h403.307
+          c15.655,0,28.346-12.691,28.346-28.346V340.75C460,325.094,447.309,312.404,431.654,312.404z"/>
+      </g>
+    </g>
+  </svg>
+                    <a href="/../media/{{ page.document }}" class="text-decoration-none" style="color: #1c4294;" download>Télecharger la documentation du projet.</a>
+                  </p>
+                  {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

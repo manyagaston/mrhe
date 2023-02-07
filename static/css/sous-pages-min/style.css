@@ -1,0 +1,67 @@
+@import url("/css/main.css");
+
+body {
+    background-color: #ffffff !important;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+h1, h2, h3 {
+    color: #1c4294 !important;
+}
+
+.profil {
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.profil-img img {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.profil-text {
+    padding: 20px 10px !important;
+}
+
+.profil-text span {
+    text-transform: uppercase;
+}
+
+.profil-descri {
+    color:#000000;
+}
+
+.profil-descri p {
+    font-size: 16px;
+}
+
+p.text-letrine:not(:focus)::first-letter {
+  font-weight: 500;
+    font-size: 96px;
+    color: #1c4294;
+    float: left;
+    letter-spacing: .1em;
+    line-height: 69%;
+    margin: 0 10px 0 0
+}
+
+.profil-descri p {
+    margin: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .profil-text {
+    padding: 0 10px;
+  }
+   
+   }
+
+@media only screen and (min-width: 768px) {
+    .profil-descri {
+        width: 710px;
+        margin: 0 auto;
+    }    
+}

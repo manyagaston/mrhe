@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<section>
+  <div class="page-title mb-5">
+    <h2 class="title">{{ page.description }}</h2>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      {% for post in post %}
+      <div class="col-lg-6 w-0">
+        {% if post.header_image %}
+            {% image post.header_image original as header_image %}
+        <div class="card mb-5">
+          <a
+            href="{% pageurl post %}"
+            class="text-decoration-none text-black"
+          >
+            <img
+              src="{{ header_image.url }}"
+              class="mb-3 w-100"
+              alt=""
+            />
+            <div class="card-body p-3">
+              <h5 class="patrimoine_title">
+                {{ post.title }}
+              </h5>
+              <hr />
+              <p class="card-text">
+                {{post.description|richtext|truncatewords:50}} 
+              </p>
+            </div>
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

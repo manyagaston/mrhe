@@ -1,0 +1,81 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block body_class %}template-404{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Page 404</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon-16x16.png' %}" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'fonts/bootstrap-5.1.3-dist/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/resultReq/resultReq.css' %}" />
+
+    <meta name="theme-color" content="#fafafa" />
+    <style>
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Book.woff' %}") format("woff");
+          font-weight: 400;
+        }
+
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Medium.woff' %}") format("woff");
+          font-weight: 500;
+        }
+
+        @font-face {
+          font-family: "CooperHewitt";
+          src: url("{% static '/fonts/font/CooperHewitt-Bold.woff' %}") format("woff");
+          font-weight: 700;
+        }
+   </style>   
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="logo">
+          <img src="{% static '/fonts/img/LOGO HYDRAULIQUE & ELECTRICITÉpsd.png' %}" alt="" />
+        </div>
+        <div class="message">
+          <div class="page-title mb-5">
+            <h2 class="title">404 | Page non trouvée</h2>
+            <div class="hline mx-auto mb-5"></div>
+            <span>Nous n'avons pas pu trouver cette page. </span> <br />
+            <a href="/">Retournez à la page d’acceuil</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="{% static '/fonts/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>
+{% endblock %}
